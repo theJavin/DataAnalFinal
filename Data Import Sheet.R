@@ -16,6 +16,8 @@ FS_sp500_stats <- read_excel("Data Sets/FS_sp500_stats.xlsx")
 FS_sp500_Value <- read_csv("Data Sets/FS_sp500_Value.csv")
   #FS_sp500_Value
 
+#Idk what I did wrong, but the lines above don't work for me :(
+
 addstats=FS_sp500_addstats
 addstats
 FS_sp500_addstats
