@@ -1,20 +1,23 @@
 library(rpart)
 library(rattle)
+library(dplyr)
 
-df=rbind(addstats,balsheets,flow,income,recentvalue,stats,value)
+#first round of joining
+combo1=full_join(addstats,balsheets,
+          by='Ticker',relationship = "many-to-many")
+combo2=full_join(flow,income,
+                 by='Ticker',relationship = "many-to-many")
 
-dim(addstats)
-dim(balsheets)
-dim(flow)
-dim(income)
-dim(recentvalue)
-dim(stats)
-dim(value)
-head(recentvalue)
-head(flow)
+combo3=full_join(value,stats,
+                 by='Ticker',relationship = "many-to-many")                 
 
-#the data sets need to have the same amount of columns and rows
-#We either need to manually combine the data and sort rows
-#by tickers, or delete stuff. I'm thinking if we want to code
-#it we would have to delete stuff and get R to bind them/sort them by their
-#ticker, which should be marked in the first column of each data set.
+#recentvalue has no Ticker column, can't join
+
+#second round of joining
+combo12=full_join(combo1,combo2,
+                  by='Ticker',relationship="many-to-many")
+
+#last join
+finalcombo=full_join(combo3,combo12,
+                     by='Ticker',relationship="many-to-many")
+#final combo is too big, need to make smaller
