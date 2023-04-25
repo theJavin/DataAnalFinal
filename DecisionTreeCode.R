@@ -21,5 +21,24 @@ combo12=full_join(combo1,combo2,
 
 
 #Final combination of all sets
-finalcombo=full_join(combo12,combo1.2,
+data=full_join(combo12,combo1.2,
                   by='Ticker',relationship="many-to-many")
+
+
+
+#training data
+trainsample=function(dataset,trainpop){
+  return(sample(nrow(dataset),
+                round(nrow(dataset)*trainprop,0)))
+}
+traindata=trainsample(data,0.7)
+
+#test data is just data[-train,]
+
+tree1=rpart(data~.,data=data[train,])
+plot(tree1)
+fancyRpartPlot(tree1)
+
+tree2=rpart(data~.,data=data[-train,])
+plot(tree2)
+fancyRpartPlot(tree2)
