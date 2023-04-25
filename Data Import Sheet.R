@@ -36,3 +36,5 @@ value=FS_sp500_Value
 
 head(FS_sp500_Recent_Value)
 names(FS_sp500_Recent_Value)[names(FS_sp500_Recent_Value) == '...1'] <- 'Ticker'
+
+

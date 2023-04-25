@@ -1,5 +1,6 @@
 library(rpart)
 library(rattle)
+install.packages('dplyr')
 library(dplyr)
 
 #first round of joining
@@ -12,12 +13,13 @@ combo3=full_join(value,stats,
                  by='Ticker',relationship = "many-to-many")                 
 
 #recentvalue has no Ticker column, can't join
-
+combo1.2=full_join(combo3,FS_sp500_Recent_Value,
+                   by='Ticker',relationship="many-to-many")
 #second round of joining
 combo12=full_join(combo1,combo2,
                   by='Ticker',relationship="many-to-many")
 
-#last join
-finalcombo=full_join(combo3,combo12,
-                     by='Ticker',relationship="many-to-many")
-#final combo is too big, need to make smaller
+
+#Final combination of all sets
+finalcombo=full_join(combo12,combo1.2,
+                  by='Ticker',relationship="many-to-many")
