@@ -34,7 +34,12 @@ stats=FS_sp500_stats
 
 value=FS_sp500_Value
 
-head(FS_sp500_Recent_Value)
-names(FS_sp500_Recent_Value)[names(FS_sp500_Recent_Value) == '...1'] <- 'Ticker'
 
+head(recentvalue)
+names(recentvalue)[names(recentvalue) == '...1'] <- 'Ticker'
 
+for(i in 1:dim(value)[1])
+{
+  value$Date[i] = as.Date.character(value$Date[i], format = "%m/%d/%Y")
+  print(i)
+}
