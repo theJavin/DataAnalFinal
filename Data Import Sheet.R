@@ -13,14 +13,16 @@ FS_sp500_Recent_Value <- read_excel("Data Sets/FS_sp500_Recent_Value.xlsx")
   #FS_sp500_Recent_Value
 FS_sp500_stats <- read_excel("Data Sets/FS_sp500_stats.xlsx")
   #FS_sp500_stats
-FS_sp500_Value <- read_csv("Data Sets/FS_sp500_Value.csv")
-  #FS_sp500_Value
+valueAfter2020 <- read.csv("C:/Users/Erykah Gieb/Downloads/valueAfter2020", header=FALSE)
+
+valueAfter2020 <- read.csv("C:/Users/Erykah Gieb/Downloads/valueAfter2020")
+#valueAfter2020=valueAfter2020[,-1]
 
 #Idk what I did wrong, but the lines above don't work for me :(
 
-addstats=FS_sp500_addstats
-addstats
-FS_sp500_addstats
+#addstats=FS_sp500_addstats
+#addstats
+#FS_sp500_addstats
 
 balsheets=FS_sp500_balsheets
 
@@ -32,7 +34,7 @@ recentvalue=FS_sp500_Recent_Value
 
 stats=FS_sp500_stats
 
-value=FS_sp500_Value
+#value=FS_sp500_Value
 
 
 head(recentvalue)
